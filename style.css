@@ -6,13 +6,12 @@
 }
 
 
-/*#153677, #4e085f - Orginal färg*/
+/*#153677, #4e085f #718502 - Orginal färg*/
 .container{
     width: 100%;
     min-height: 100vh;
-    background:  linear-gradient(135deg, #153677, #718502);
+    background:  linear-gradient(135deg, #153677, lightblue);
     padding: 10px;
-
 }
 
 /*start på todo app */
@@ -23,7 +22,6 @@
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
-    
 }
 
 .todo-app h2{
@@ -60,10 +58,10 @@ input{
 .Btn{
     border: none;
     outline: none;
-    padding:  16px 50px;
+    padding:  10px 40px;
     background: #4548ff;
     color: #fff;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     border-radius: 40px;
 }
@@ -239,6 +237,7 @@ a:hover{
 .all_recept{
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: 15px;
     font-size: 15px;
