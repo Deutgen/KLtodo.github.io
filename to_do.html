@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="todo-app">
+            <h2> Leo o Kajsas to do!</h2>
+            <div class="checkbox-wrapper">
+            <input type="checkbox" id="check" class="toggle">
+            <label for="check" id="label"></label>
+        </div>
+        
+            
+
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Vad ska vi hitta på?">
+                <button class="Btn" onclick="AddTask2()">Lägg till</button>
+            </div>
+            <ul id="list-container">
+                <!-- <li class="checked">Task 1</li>
+                <li>Task 1</li>
+                <li>Task 1</li> -->
+            </ul>
+
+ 
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+        // Funktioner för to_do.html
+        const inputBox = document.getElementById("input-box");
+        const listContainer = document.getElementById("list-container");
+    
+        function AddTask2() {
+            console.log("AddTask2 funktion körs!");
+            if (inputBox.value === '') {
+                alert("Måste ju skriva något gumman");
+            } else {
+                let li = document.createElement("li");
+                li.innerHTML = inputBox.value;
+                listContainer.appendChild(li);
+                let span = document.createElement("span");
+                span.innerHTML = "\u00d7";
+                li.appendChild(span);
+            }
+            inputBox.value = '';
+            saveData2('toDoData2');
+        }
+
+        listContainer.addEventListener("click",function(e){
+            if(e.target.tagName =="LI"){
+                e.target.classList.toggle("checked");
+                saveData2('toDoData2');
+            }
+            else if(e.target.tagName === "SPAN"){
+                e.target.parentElement.remove();
+                saveData2('toDoData2');
+            
+            }
+        }, false);
+    
+        function saveData2(dataKey) {
+            let data = Array.from(listContainer.children).map(li => li.innerHTML);
+            localStorage.setItem(dataKey, JSON.stringify(data));
+        }
+    
+        function showData2(dataKey) {
+            let data = JSON.parse(localStorage.getItem(dataKey));
+            if (data) {
+                listContainer.innerHTML = '';
+                data.forEach(item => {
+                    let li = document.createElement("li");
+                    li.innerHTML = item;
+                    listContainer.appendChild(li);
+                    let span = document.createElement("span");
+                    span.innerHTML = "\u00d7";
+                    li.appendChild(span);
+                });
+            }
+        }
+        saveData2('toDoData2');
+        showData2('toDoData2');
+    
+        // JavaScript-koden
+        const checkbox = document.getElementById('check');
+        const label = document.getElementById('label');
+        let isChecked = false;
+    
+        checkbox.addEventListener('change', redirectToPage);
+        label.addEventListener('click', redirectToPage);
+    
+        function redirectToPage() {
+            isChecked = !isChecked;
+    
+            if (isChecked) {
+                if (window.location.href.endsWith('index.html')) {
+                    // Om checkboxen är markerad och vi är på index.html, öppna to_do.html
+                    window.location.href = 'to_do.html';
+                }
+            } else {
+                if (window.location.href.endsWith('to_do.html')) {
+                    // Om checkboxen är avmarkerad och vi är på to_do.html, öppna index.html
+                    window.location.href = 'index.html';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', function () {
+            if (window.location.href.endsWith('to_do.html')) {
+                checkbox.checked = true;
+                label.classList.add('checked');
+            } else {
+                checkbox.checked = false;
+                label.classList.remove('checked');
+            }
+        });
+    </script>
+</body>
+</html>
