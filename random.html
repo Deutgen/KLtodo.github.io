@@ -10,18 +10,20 @@
 <body>
     <div class="container">
         <div class="todo-app">
-            <h2> Tips på recept <img src="images/list.png"></h2>
+            <h2> Svårt att välja? Klicka på knappen!</h2>
             <a href="recept.html">Tillbaka</a>
             <div class="checkbox-wrapper">
             <input type="checkbox" id="check" class="toggle">
         </div>
         <div class="random-body">
             <div>
-                <button class="randomBtn" id="random">Random</button>
-                <h3 id="result">Test</h3>
+                <button class="randomBtn" id="random" onclick="startSpin()">Vad ska vi laga?</button>
+            </div>
+            <div>
+                <span id="option"></span>
             </div>
         </div>
+        <script src="script.js"></script>
 
-<script src="script.js"></script>
 </body>
 </html>

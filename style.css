@@ -58,7 +58,7 @@ input{
 .Btn{
     border: none;
     outline: none;
-    padding:  10px 40px;
+    padding:  13px 40px;
     background: #4548ff;
     color: #fff;
     font-size: 15px;
@@ -221,13 +221,12 @@ a:hover{
 }
 .randomBtn{
     text-align: center;
-    color: white;
-    background-color: #4548ff;
+    color: pink;
     font-size: 25px;
     padding: 10px;
     cursor: pointer;
-    border-radius: 50%;
-    padding:  16px 50px;
+    border-radius: 60%;
+    padding:  16px 30px;
 }
 /* slut på random knapp*/
 

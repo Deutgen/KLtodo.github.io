@@ -462,13 +462,47 @@ function pasta_2() {
     `;
     allRecept.innerHTML = ingredients;
   }
+
+  // ... (previous JavaScript code)
+
+const options = ['pasta', 'ris', 'nudlar'];
+
+// Funktion för att slumpmässigt välja ett recept och uppdatera H3-elementet
+function randomizeHeader() {
+    var headerElement = document.getElementById('result'); // Update this line with the correct element ID for the header
+    var randomIndex = Math.floor(Math.random() * options.length); // Use the 'options' array instead of 'recipesList'
+    headerElement.textContent = options[randomIndex]; // Use the 'options' array instead of 'recipesList'
+}
+
+// Funktion för att slumpmässigt välja en av alternativen (pasta, ris, nudlar)
+  function randomizeOption() {
+    var optionElement = document.getElementById('option');
+    var randomIndex = Math.floor(Math.random() * options.length);
+    optionElement.textContent = options[randomIndex];
+}
+
+// Visa ett slumpmässigt recept och ett slumpmässigt alternativ när sidan laddas
+document.addEventListener('DOMContentLoaded', function() {
+    randomizeHeader();
+    randomizeOption();
+});
+
+  function startSpin() {
+    var randomButton = document.getElementById('random');
+    randomButton.disabled = true; // Disable the button during the spin
+
+    // ... (rest of the spinning animation code)
+
+    // When the animation finishes, enable the button and set the final result
+    spinAnimation.onfinish = function() {
+        randomButton.disabled = false; // Enable the button
+        randomizeOption(); // Show a random option (pasta, ris, or nudlar)
+    };
+}
+
+// ... (rest of the JavaScript code)
+
+
   
-  function randomizeHeader() {
-    var headerElement = document.getElementById('result');
-    var recipes = ['Dragon pasta', 'Vodka pasta', 'Ris med bönor', 'Haloumi burgare'];
-    var randomIndex = Math.floor(Math.random() * recipes.length);
-    headerElement.textContent = recipes[randomIndex];
-  }
   
-  var randomButton = document.getElementById('random');
-  randomButton.addEventListener('click', randomizeHeader);
+  
